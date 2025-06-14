@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useToast } from "../context/ToastContext";
 import api from "../services/api";
@@ -14,7 +12,6 @@ const AdminUsers = () => {
 	const [editingUser, setEditingUser] = useState(null);
 
 	const { showError, showSuccess } = useToast();
-
 	useEffect(() => {
 		fetchUsers();
 	}, [currentPage]);
@@ -262,11 +259,10 @@ const UserModal = ({ user, onClose, onSuccess }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
-
 		try {
 			if (user) {
 				// Update user
-				await api.put(`/users/${user._id}`, {
+				await api.put(`/users/:${user._id}`, {
 					name: formData.name,
 					email: formData.email,
 					role: formData.role,

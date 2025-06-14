@@ -1,23 +1,23 @@
-import { Navigate } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
-import LoadingSpinner from "./LoadingSpinner"
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 const AdminRoute = ({ children }) => {
-  const { isAuthenticated, loading, isAdmin } = useAuth()
+	const { isAuthenticated, loading, isAdmin } = useAuth();
 
-  if (loading) {
-    return <LoadingSpinner />
-  }
+	if (loading) {
+		return <LoadingSpinner />;
+	}
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
-  }
+	if (!isAuthenticated) {
+		return <Navigate to="/login" replace />;
+	}
 
-  if (!isAdmin()) {
-    return <Navigate to="/dashboard" replace />
-  }
+	if (!isAdmin()) {
+		return <Navigate to="/dashboard" replace />;
+	}
 
-  return children
-}
+	return children;
+};
 
-export default AdminRoute
+export default AdminRoute;

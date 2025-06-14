@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, useContext, useReducer, useEffect } from "react";
 import api from "../services/api";
 
@@ -68,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 		} else {
 			dispatch({ type: "AUTH_ERROR" });
 		}
-	}, []);
+	}, [state.token]);
 
 	const loadUser = async () => {
 		try {
