@@ -17,7 +17,7 @@ router.post("/register", validateUserRegistration, registerUser)
 router.post("/login", validateUserLogin, loginUser)
 
 // Protected routes
-router.use(protect) // All routes after this middleware are protected
+router.use(protect) 
 
 router.get("/profile", getUserProfile)
 

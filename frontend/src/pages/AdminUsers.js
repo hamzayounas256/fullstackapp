@@ -151,7 +151,7 @@ const AdminUsers = () => {
 					</div>
 				)}
 
-				{/* Pagination */}
+				{/* handling pages */}
 				{pagination.pages > 1 && (
 					<div className="px-6 py-4 border-t border-gray-200">
 						<div className="flex justify-center">

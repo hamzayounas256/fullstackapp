@@ -17,7 +17,7 @@ router.get("/", getAllPosts)
 router.get("/:id", getPost)
 
 // Protected routes
-router.use(protect) // All routes after this middleware are protected
+router.use(protect)
 
 router.post("/", validatePost, createPost)
 router.get("/user/my-posts", getUserPosts)
