@@ -41,18 +41,6 @@ const AdminUsers = () => {
 		}
 	};
 
-	const handleToggleUserStatus = async (userId, currentStatus) => {
-		try {
-			await api.put(`/users/${userId}`, { isActive: !currentStatus });
-			showSuccess(
-				`User ${!currentStatus ? "activated" : "deactivated"} successfully`
-			);
-			fetchUsers();
-		} catch (error) {
-			showError("Failed to update user status");
-		}
-	};
-
 	const formatDate = (dateString) => {
 		return new Date(dateString).toLocaleDateString("en-US", {
 			year: "numeric",
@@ -102,7 +90,6 @@ const AdminUsers = () => {
 									<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Role
 									</th>
-
 									<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Joined
 									</th>
@@ -270,7 +257,7 @@ const UserModal = ({ user, onClose, onSuccess }) => {
 				showSuccess("User updated successfully");
 			} else {
 				// Create user
-				await api.post("/users", formData);
+				await api.post("/users/register", formData);
 				showSuccess("User created successfully");
 			}
 			onSuccess();
